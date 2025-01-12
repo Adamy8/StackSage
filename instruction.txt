@@ -1,0 +1,9 @@
+FULL STACK:
+    1, MERN stack :MongoDB, Express, React, Node.js
+        Use the express library for building web applications
+        mongoose for working with MongoDB
+        socket.io for real-time communication
+        Install these packages using npm (Node Package Manager)
+        \\ skills to learn: ALL
+    
+    
