@@ -8,6 +8,8 @@ FULL STACK:
         2h course: https://www.youtube.com/watch?v=O3BUHwfHf84
         14series 14min: https://www.youtube.com/watch?v=98BzS5Oz5E4&list=PL4cUxeGkcC9iJ_KkrkBZWZRHVwnzLIoUE
         Node.js: https://www.youtube.com/watch?v=zb3Qk8SG5Ms&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=2
+        MongoDB: https://www.youtube.com/watch?v=gDOKSgqM-bQ&list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA&index=2
+        
 
     2, Django (Python)
         next project! ( + Next.js)
