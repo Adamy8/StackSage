@@ -27,9 +27,18 @@ app.post("/api/products", async (req,res) => {      //request & response
     }
 }); //postman for backend testing
 
-// console.log(process.env.MONGO_URI);   //testing mongo access method
+app.delete("/api/products/:id/", async (req,res) => {
+    const {id} = req.params;
+    // console.log("testid: ", id);   //test
+    try {
+        await Product.findByIdAndDelete(id);
+        res.status(200).json({ success: true, message: "Product deleted"});
+    } catch (error) {
+        res.status(404).json({ success: false, message: "Product not found"});
+    }
+});
 
 app.listen(5010,()=>{
     connectDB();
     console.log("Server started at http://localhost:5010");
-})
+});
