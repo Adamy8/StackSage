@@ -6,8 +6,17 @@ import { connectDB } from './config/db.js';
 import Product from './model/product.model.js';
 
 const app = express();
-
 app.use(express.json()); // make it accept JSON data in the req.body
+
+app.get("/api/products",async (req,res) => {
+    try {
+        const products = await Product.find({});
+        res.status(200).json({success:true , data:products});
+    } catch (error) {
+        console.log("Error in fetching products:", error.message);  //for debug
+        res.status(500).json({ success:false, message:"Server error"});
+    }
+});
 
 app.post("/api/products", async (req,res) => {      //request & response
     const product = req.body;
@@ -22,7 +31,7 @@ app.post("/api/products", async (req,res) => {      //request & response
         await newProduct.save();
         res.status(201).json({ success: true, data: newProduct});
     } catch (error) {
-        console.error("Error in Create product:", error.message);
+        console.error("Error in Create product:", error.message);  //for debug
         res.status(500).json({ success: false, message: "Sever Error"});
     }
 }); //postman for backend testing
@@ -34,6 +43,7 @@ app.delete("/api/products/:id/", async (req,res) => {
         await Product.findByIdAndDelete(id);
         res.status(200).json({ success: true, message: "Product deleted"});
     } catch (error) {
+        console.log("Error in deleting products:", error.message);  //for debug
         res.status(404).json({ success: false, message: "Product not found"});
     }
 });
