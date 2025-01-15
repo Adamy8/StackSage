@@ -33,7 +33,7 @@ export const updateProduct = async (req,res) => {       // router.patch is for u
     const {id} = req.params;
     const product = req.body;
 
-    if(!mongoose.Types.ObjectId.isValid(id)){   // make sure the id is found
+    if(!mongoose.Types.ObjectId.isValid(id)){   // this only check if id is valid MongoDB id, dont check existance
         return res.status(404).json({success:false, message:"Invalid Product Id"});
     }
 
@@ -48,12 +48,17 @@ export const updateProduct = async (req,res) => {       // router.patch is for u
 
 export const deleteProduct = async (req,res) => {
     const {id} = req.params;
-    // console.log("testid: ", id);   //test
+    // console.log("testid: ", id);   //debug
     try {
+        const product = await Product.findById(id);
+        if(!product){   //make sure product is found
+            return res.status(404).json({ success: false, message: 'Product not found' });
+        }
+
         await Product.findByIdAndDelete(id);
         res.status(200).json({ success: true, message: "Product deleted"});
     } catch (error) {
         console.log("Error in deleting products:", error.message);  //for debug
-        res.status(404).json({ success: false, message: "Product not found"});
+        res.status(500).json({ success: false, message: "Server Error"});
     }
 }
