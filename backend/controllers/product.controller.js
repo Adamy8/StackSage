@@ -39,6 +39,9 @@ export const updateProduct = async (req,res) => {       // router.patch is for u
 
     try {
         const updatedProduct = await Product.findByIdAndUpdate(id, product, {new:true});
+        if (!updatedProduct) {          //existance check
+            return res.status(404).json({ success: false, message: "updateProduct not found" });
+        }
         res.status(200).json({success:true, data:updatedProduct});
     } catch (error) {
         console.log("Error in updating products:", error.message); // for debug
@@ -52,7 +55,7 @@ export const deleteProduct = async (req,res) => {
     try {
         const product = await Product.findById(id);
         if(!product){   //make sure product is found
-            return res.status(404).json({ success: false, message: 'Product not found' });
+            return res.status(404).json({ success: false, message: 'deleteProduct not found' });
         }
 
         await Product.findByIdAndDelete(id);
