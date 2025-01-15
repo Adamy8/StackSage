@@ -34,7 +34,7 @@ export const updateProduct = async (req,res) => {       // router.patch is for u
     const product = req.body;
 
     if(!mongoose.Types.ObjectId.isValid(id)){   // this only check if id is valid MongoDB id, dont check existance
-        return res.status(404).json({success:false, message:"Invalid Product Id"});
+        return res.status(400).json({success:false, message:"Invalid Product ID"});
     }
 
     try {
@@ -52,6 +52,9 @@ export const updateProduct = async (req,res) => {       // router.patch is for u
 export const deleteProduct = async (req,res) => {
     const {id} = req.params;
     // console.log("testid: ", id);   //debug
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ success: false, message: "Invalid product ID" });
+    }
     try {
         const product = await Product.findById(id);
         if(!product){   //make sure product is found

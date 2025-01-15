@@ -8,11 +8,12 @@ import { connectDB } from './config/db.js';
 import productRoutes from "./routes/product.route.js";
 
 const app = express();
+const PORT = process.env.PORT || 5010;      // || 5010 is for when forget to set PORT in .env
 app.use(express.json()); // make it accept JSON data in the req.body
 
 app.use("/api/products/",productRoutes);
 
-app.listen(5010,()=>{
+app.listen(PORT,()=>{
     connectDB();
-    console.log("Server started at http://localhost:5010");
+    console.log("Server started at http://localhost:" + PORT);
 });
