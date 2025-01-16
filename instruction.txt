@@ -10,7 +10,11 @@ FULL STACK:
         Node.js: https://www.youtube.com/watch?v=zb3Qk8SG5Ms&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=2
         MongoDB: https://www.youtube.com/watch?v=gDOKSgqM-bQ&list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA&index=2
         
+    React: $ npm create vite@latest .
+        use the open source:  Chakra UI / vite
 
+
+________________________________________________________________________________
     2, Django (Python)
         next project! ( + Next.js)
     3, Ruby on Rails
