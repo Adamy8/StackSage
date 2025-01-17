@@ -1,4 +1,5 @@
 import { Container, Flex, Text, Link, HStack, Button } from "@chakra-ui/react"
+import { ColorModeButton, useColorModeValue } from "@/components/ui/color-mode"
 import { FaRegSquarePlus } from "react-icons/fa6";
 
 const Navbar = () => {
@@ -22,10 +23,11 @@ const Navbar = () => {
             </Text>
             <HStack spacing={2} alignItems={"center"}>
                 <Link href={"/create"}>
-                    <Button>
-                        <FaRegSquarePlus />
+                    <Button  backgroundColor={useColorModeValue("gray.100","gray.900")} >        {/* change style later! Consistent with box */}
+                        <FaRegSquarePlus style={{ margin: -20, color:useColorModeValue("black", "white") }} />
                     </Button>
                 </Link>
+                <ColorModeButton />
             </HStack>
 
         </Flex>
