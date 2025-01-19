@@ -19,7 +19,7 @@ import { useProductStore } from "../store/product.js"
 
 const ProductCard = (product) => {
     const [updatedProduct, setUpdatedProduct] = useState(product);    // for drawer's form
-    //   console.log(updatedProduct.product.name);
+    console.log(updatedProduct);
     const textColor = useColorModeValue("gray.600", "gray.200");
     const bg = useColorModeValue("white", "gray.800");
     //   console.log("get here: ",product.product);
@@ -96,17 +96,17 @@ const ProductCard = (product) => {
                 <VStack spaceY={7}>
                     <Field label="Name">
                         <Input placeholder='Product Name' name='name' value={updatedProduct.product.name}
-                        onChange={(e) => setUpdatedProduct({...updatedProduct, name: e.target.value})}
+                        onChange={(e) => setUpdatedProduct({...updatedProduct, product: { ...updatedProduct.product, name: e.target.value }})}
                         />
                     </Field>
                     <Field label="Price">
                         <Input placeholder='Price' name='price' type='number' value={updatedProduct.product.price}
-                        onChange={(e) => setUpdatedProduct({...updatedProduct, price: e.target.value})}
+                        onChange={(e) => setUpdatedProduct({...updatedProduct, product: { ...updatedProduct.product, price: e.target.value }})}
                         />
                     </Field>
                     <Field label="Image">
                         <Input placeholder='Image URL' name='image' value={updatedProduct.product.image}
-                        onChange={(e) => setUpdatedProduct({...updatedProduct, image: e.target.value})}
+                        onChange={(e) => setUpdatedProduct({...updatedProduct, product: { ...updatedProduct.product, image: e.target.value }})}
                         />
                     </Field>
                 </VStack>
