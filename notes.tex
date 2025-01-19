@@ -18,12 +18,16 @@ Postman software:                               for backend desktop testing
 passing :id in DELETE:                          dynamic value, any value  
 app.patch:                                      updating some field (put for all field)
 process.env.MONGO_URI:                          access MongoDB
+$server$ attribute in vite.config.js:           set prefix of the server URL
+using $toaster$ from chakra:                    need to render it in return
 
-const product = await Product.findById(id);     access the product in controller
-if(!product)...                                 check existance
 
-if(!mongoose.Types.ObjectId.isValid(id))        check if is valid MongoDB id, does not check existance like above^
-
+1,  const product = await Product.findById(id);     access the product in controller
+    if(!product)...                                 check existance
+2,  if(!mongoose.Types.ObjectId.isValid(id))        check if is valid MongoDB id, does not check existance like above^
 
 Use $chakra$ for react module, speed up the coding: https://www.chakra-ui.com/docs/
 Use $react icon$ for icons, (library available in github, just search in google): https://react-icons.github.io/react-icons/
+Use $Unsplash$ to get image URL//little tool
+
+$npm i zustand$: simple API for store states in react applications
