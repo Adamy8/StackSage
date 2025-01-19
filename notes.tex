@@ -20,7 +20,7 @@ app.patch:                                      updating some field (put for all
 process.env.MONGO_URI:                          access MongoDB
 $server$ attribute in vite.config.js:           set prefix of the server URL
 using $toaster$ from chakra:                    need to render it in return
-
+${conditon && <Text ...>}                       very clever way to use in return </> with condition!$
 
 1,  const product = await Product.findById(id);     access the product in controller
     if(!product)...                                 check existance
@@ -31,3 +31,7 @@ Use $react icon$ for icons, (library available in github, just search in google)
 Use $Unsplash$ to get image URL//little tool
 
 $npm i zustand$: simple API for store states in react applications
+
+//for update UI immediately
+set(state => ({products:state.products.filter(product => product._id != pid)}));
+

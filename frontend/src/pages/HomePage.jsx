@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);    //fetch products from DB
-  console.log("Products: ", products);
+  // console.log("Products: ", products);
 
   return (
     <Container>
@@ -25,17 +25,16 @@ const HomePage = () => {
           ))}
         </SimpleGrid>
         
-        
-        <Text textStyle="lg" textAlign={"center"} fontWeight='bold' color="gray.500">
-          No products found 🥲{" "}
-          <Link href={"/create"}>
-            <Text as="span" color="blue.600" _hover={{textDecoration:"underline", color:"blue.500"}}>
-              Create a product
-            </Text>
-          </Link>
-        </Text>
-
-
+        {products.length == 0 && (
+          <Text textStyle="lg" textAlign={"center"} fontWeight='bold' color="gray.500">
+            No products found 🥲{" "}
+            <Link href={"/create"}>
+              <Text as="span" color="blue.600" _hover={{textDecoration:"underline", color:"blue.500"}}>
+                Create a product
+              </Text>
+            </Link>
+          </Text>
+        )}
 
 
       </VStack>
