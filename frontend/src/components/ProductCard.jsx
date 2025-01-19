@@ -1,8 +1,7 @@
-import { Box, Heading, HStack, Image, Text, Button } from '@chakra-ui/react'    //chakra ui
+import { Box, Heading, HStack, Image, Text, Button, VStack, Input } from '@chakra-ui/react'    //chakra ui
 import { useColorModeValue } from "@/components/ui/color-mode"      //chakra ui
 import { Toaster, toaster } from "@/components/ui/toaster"     //chakra ui
 import {
-    DrawerActionTrigger,
     DrawerBackdrop,
     DrawerBody,
     DrawerCloseTrigger,
@@ -11,8 +10,8 @@ import {
     DrawerHeader,
     DrawerRoot,
     DrawerTitle,
-    DrawerTrigger,
   } from "@/components/ui/drawer"    //chakra ui
+import { Field } from "@/components/ui/field.jsx";
 import { useState } from "react"    // React
 import { FiEdit } from "react-icons/fi";    //react icon
 import { RiDeleteBin5Line } from "react-icons/ri";  //react icon
@@ -69,19 +68,24 @@ const ProductCard = (product) => {
         <DrawerBackdrop />
         <DrawerContent>
             <DrawerHeader>
-            <DrawerTitle>Drawer Title</DrawerTitle>
+            <DrawerTitle>Edit product</DrawerTitle>
             </DrawerHeader>
             <DrawerBody>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+                <VStack spaceY={10}>
+                    <Field label="Name">
+                        <Input placeholder='Product Name' name='name' />
+                    </Field>
+                    <Field label="Price">
+                        <Input placeholder='Price' name='price' type='number' />
+                    </Field>
+                    <Field label="Image">
+                        <Input placeholder='Image URL' name='image' />
+                    </Field>
+                </VStack>
             </DrawerBody>
             <DrawerFooter>
-            <DrawerActionTrigger asChild>
-                <Button variant="outline">Cancel</Button>
-            </DrawerActionTrigger>
-            <Button>Save</Button>
+                <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button> 
+                <Button>Save</Button>
             </DrawerFooter>
             <DrawerCloseTrigger />
         </DrawerContent>
