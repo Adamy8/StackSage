@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 export const getProducts = async (req,res) => {
     try {
         const products = await Product.find({});
-        res.status(200).json({success:true , data:products});
+        res.status(200).json({success:true , data:products, message: "Get successfully!"});
     } catch (error) {
         console.log("Error in fetching products:", error.message);  //for debug
         res.status(500).json({ success:false, message:"Server Error"});
@@ -22,7 +22,7 @@ export const createProduct = async (req,res) => {      //request & response
 
     try {
         await newProduct.save();
-        res.status(201).json({ success: true, data: newProduct});
+        res.status(201).json({ success: true, data: newProduct, message: "Created successfully!"});
     } catch (error) {
         console.error("Error in Create product:", error.message);  //for debug
         res.status(500).json({ success: false, message: "Server Error"});
@@ -42,7 +42,7 @@ export const updateProduct = async (req,res) => {       // router.patch is for u
         if (!updatedProduct) {          //existance check
             return res.status(404).json({ success: false, message: "updateProduct not found" });
         }
-        res.status(200).json({success:true, data:updatedProduct});
+        res.status(200).json({success:true, data:updatedProduct, message:"Updated successfully!"});
     } catch (error) {
         console.log("Error in updating products:", error.message); // for debug
         res.status(500).json({success:false, message:"Server Error"});
