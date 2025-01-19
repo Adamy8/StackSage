@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);    //fetch products from DB
-  // console.log("Products: ", products);
+  console.log("Products: ", products);
 
   return (
     <Container>
@@ -19,19 +19,17 @@ const HomePage = () => {
           Current Product 🚀
         </Heading>
         
-        <SimpleGrid column={{base:1, md:2, lg:3}} spacing={10} w="full">
-          {products.map((product) => {
-            <ProductCard key={product.id} product={product} />
-          })}
+        <SimpleGrid columns={{base:1, md:2, lg:3}} spacing={100} w="full">
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
         </SimpleGrid>
-        
-        
         
         
         <Text textStyle="lg" textAlign={"center"} fontWeight='bold' color="gray.500">
           No products found 🥲{" "}
           <Link href={"/create"}>
-            <Text as="span" color="blue.700" _hover={{textDecoration:"underline", color:"blue.600"}}>
+            <Text as="span" color="blue.600" _hover={{textDecoration:"underline", color:"blue.500"}}>
               Create a product
             </Text>
           </Link>
