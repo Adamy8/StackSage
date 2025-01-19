@@ -71,7 +71,7 @@ const ProductCard = (product) => {
             <DrawerTitle>Edit product</DrawerTitle>
             </DrawerHeader>
             <DrawerBody>
-                <VStack spaceY={10}>
+                <VStack spaceY={7}>
                     <Field label="Name">
                         <Input placeholder='Product Name' name='name' />
                     </Field>
@@ -82,10 +82,13 @@ const ProductCard = (product) => {
                         <Input placeholder='Image URL' name='image' />
                     </Field>
                 </VStack>
+                <HStack mt={10} justifyContent="flex-end">
+                    <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button> 
+                    <Button>Save</Button>
+                </HStack>
             </DrawerBody>
-            <DrawerFooter>
-                <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button> 
-                <Button>Save</Button>
+            <DrawerFooter justifyContent={"center"}>
+                <Text color='gray.500'>Product &#174;</Text>    {/*  &#174; is the code for ®  */}
             </DrawerFooter>
             <DrawerCloseTrigger />
         </DrawerContent>
