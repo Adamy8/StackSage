@@ -18,27 +18,49 @@ import { RiDeleteBin5Line } from "react-icons/ri";  //react icon
 import { useProductStore } from "../store/product.js"
 
 const ProductCard = (product) => {
-  const textColor = useColorModeValue("gray.600", "gray.200");
-  const bg = useColorModeValue("white", "gray.800");
-//   console.log("get here: ",product.product);
-  const productInstance = product.product;
-//   console.log("here, ",productInstance._id);
-  const { deleteProduct } = useProductStore();
-  const handleDeleteProduct = async (pid) => {
+    const [updatedProduct, setUpdatedProduct] = useState(product);    // for drawer's form
+    //   console.log(updatedProduct.product.name);
+    const textColor = useColorModeValue("gray.600", "gray.200");
+    const bg = useColorModeValue("white", "gray.800");
+    //   console.log("get here: ",product.product);
+    const productInstance = product.product;
+
+    const { deleteProduct } = useProductStore(); // from store/product.js
+    const handleDeleteProduct = async (pid) => {
     const {success, message} = await deleteProduct(pid);
     if(success){
         toaster.create({
-          title: `Success`,
-          type: 'success',
-          description: message,
+            title: `Success`,
+            type: 'success',
+            description: message,
         })
-      } else{
+        } else{
         toaster.create({
-          title: `Failed`,
-          type: 'error',
-          description: message,
+            title: `Failed`,
+            type: 'error',
+            description: message,
         });
-      }
+        }
+    }
+    
+    const { updateProduct } = useProductStore(); // from store/products.js
+    const handleUpdateProduct = async (pid,updatedProduct) => {
+        const {success, message} = await updateProduct(pid, updatedProduct);
+        if(success){
+            toaster.create({
+              title: `Success`,
+              type: 'success',
+              description: message,
+            });
+            setOpen(false);
+          } else{
+            toaster.create({
+              title: `Failed`,
+              type: 'error',
+              description: message,
+            });
+          }
+        
   }
 
   const [open, setOpen] = useState(false)       // for Drawer! (at the bottom)
@@ -63,7 +85,7 @@ const ProductCard = (product) => {
         </Box>
 
 
-        {/* Update Drawer! */}
+        {/* The Update Drawer! */}
         <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
         <DrawerBackdrop />
         <DrawerContent>
@@ -73,18 +95,24 @@ const ProductCard = (product) => {
             <DrawerBody>
                 <VStack spaceY={7}>
                     <Field label="Name">
-                        <Input placeholder='Product Name' name='name' />
+                        <Input placeholder='Product Name' name='name' value={updatedProduct.product.name}
+                        onChange={(e) => setUpdatedProduct({...updatedProduct, name: e.target.value})}
+                        />
                     </Field>
                     <Field label="Price">
-                        <Input placeholder='Price' name='price' type='number' />
+                        <Input placeholder='Price' name='price' type='number' value={updatedProduct.product.price}
+                        onChange={(e) => setUpdatedProduct({...updatedProduct, price: e.target.value})}
+                        />
                     </Field>
                     <Field label="Image">
-                        <Input placeholder='Image URL' name='image' />
+                        <Input placeholder='Image URL' name='image' value={updatedProduct.product.image}
+                        onChange={(e) => setUpdatedProduct({...updatedProduct, image: e.target.value})}
+                        />
                     </Field>
                 </VStack>
                 <HStack mt={10} justifyContent="flex-end">
                     <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button> 
-                    <Button>Save</Button>
+                    <Button onClick={() => handleUpdateProduct(productInstance._id, updatedProduct)}>Update</Button>
                 </HStack>
             </DrawerBody>
             <DrawerFooter justifyContent={"center"}>
