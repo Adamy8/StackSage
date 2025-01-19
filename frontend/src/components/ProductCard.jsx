@@ -1,6 +1,19 @@
-import { Box, Heading, HStack, Image, Text } from '@chakra-ui/react'    //chakra ui
+import { Box, Heading, HStack, Image, Text, Button } from '@chakra-ui/react'    //chakra ui
 import { useColorModeValue } from "@/components/ui/color-mode"      //chakra ui
 import { Toaster, toaster } from "@/components/ui/toaster"     //chakra ui
+import {
+    DrawerActionTrigger,
+    DrawerBackdrop,
+    DrawerBody,
+    DrawerCloseTrigger,
+    DrawerContent,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerRoot,
+    DrawerTitle,
+    DrawerTrigger,
+  } from "@/components/ui/drawer"    //chakra ui
+import { useState } from "react"    // React
 import { FiEdit } from "react-icons/fi";    //react icon
 import { RiDeleteBin5Line } from "react-icons/ri";  //react icon
 import { useProductStore } from "../store/product.js"
@@ -29,6 +42,7 @@ const ProductCard = (product) => {
       }
   }
 
+  const [open, setOpen] = useState(false)       // for Drawer! (at the bottom)
 
   return (
     <Box shadow="lg" rounded="lg" margin="5" overflow='hidden' transition='all 0.3s'
@@ -44,10 +58,36 @@ const ProductCard = (product) => {
             </Text>
 
             <HStack spacing={2}>
-                <FiEdit color='blue' />
+                <FiEdit color='blue' onClick={() => setOpen(true)}/>    {/* Open Drawer*/}
                 <RiDeleteBin5Line color='red' onClick={() => {handleDeleteProduct(productInstance._id)}}/>
             </HStack>
         </Box>
+
+
+        {/* Update Drawer! */}
+        <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <DrawerBackdrop />
+        <DrawerContent>
+            <DrawerHeader>
+            <DrawerTitle>Drawer Title</DrawerTitle>
+            </DrawerHeader>
+            <DrawerBody>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            </DrawerBody>
+            <DrawerFooter>
+            <DrawerActionTrigger asChild>
+                <Button variant="outline">Cancel</Button>
+            </DrawerActionTrigger>
+            <Button>Save</Button>
+            </DrawerFooter>
+            <DrawerCloseTrigger />
+        </DrawerContent>
+        </DrawerRoot>
+
+
     </Box>
   )
 }
