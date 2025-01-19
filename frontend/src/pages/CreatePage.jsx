@@ -16,12 +16,14 @@ const CreatePage = () => {
   const {createProduct} = useProductStore()
   const handleAddProduct = async () => {
     const {success, message} = await createProduct(newProduct);
-    if(success){toaster.create({
-      title: `Success`,
-      type: 'success',
-      description: message,
-    })}
-    else{
+    if(success){
+      toaster.create({
+        title: `Success`,
+        type: 'success',
+        description: message,
+      })
+      setNewProduct({name:"", price:"", image:""});     //reset the form state after success
+    } else{
       toaster.create({
         title: `Failed`,
         type: 'error',

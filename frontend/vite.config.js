@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react() , jsconfigPaths()],
   server:{
     proxy:{
-      "/api":{target:"http://localhost:5010"},
+      "/api":{target:"http://localhost:5010"},    //backend port
     },
   },
 })
