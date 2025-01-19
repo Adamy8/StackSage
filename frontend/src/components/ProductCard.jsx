@@ -19,7 +19,7 @@ import { useProductStore } from "../store/product.js"
 
 const ProductCard = (product) => {
     const [updatedProduct, setUpdatedProduct] = useState(product);    // for drawer's form
-    console.log(updatedProduct);
+    // console.log(updatedProduct);
     const textColor = useColorModeValue("gray.600", "gray.200");
     const bg = useColorModeValue("white", "gray.800");
     //   console.log("get here: ",product.product);

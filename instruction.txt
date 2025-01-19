@@ -1,3 +1,8 @@
+Doc:
+Chakra UI:  https://www.chakra-ui.com/docs/get-started/installation
+React Icon: https://react-icons.github.io/react-icons/
+
+
 FULL STACK:
     1, MERN stack :MongoDB, Express, React, Node.js
         Use the express library for building web applications
