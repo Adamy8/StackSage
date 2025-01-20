@@ -35,3 +35,12 @@ $npm i zustand$: simple API for store states in react applications
 //for update UI immediately, no need re-fresh
 set(state => ({products:state.products.filter(product => product._id != pid)}));
 
+
+$ Connecting front back end! (In backend/server.js) Really important. $
+const __dirname = path.resolve();
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, "/frontend/dist")));
+    app.get("*", (req,res) => {
+        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    })
+}
