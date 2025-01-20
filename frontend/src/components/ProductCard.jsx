@@ -22,6 +22,7 @@ const ProductCard = (product) => {
     // console.log(updatedProduct);
     const textColor = useColorModeValue("gray.600", "gray.200");
     const bg = useColorModeValue("white", "gray.800");
+    const buttonBg = useColorModeValue("gray.100", "gray.700");
     //   console.log("get here: ",product.product);
     const productInstance = product.product;
 
@@ -79,8 +80,12 @@ const ProductCard = (product) => {
             </Text>
 
             <HStack spacing={2}>
-                <FiEdit color='blue' onClick={() => setOpen(true)}/>    {/* Open Drawer*/}
-                <RiDeleteBin5Line color='red' onClick={() => {handleDeleteProduct(productInstance._id)}}/>
+                <Button bg={buttonBg} onClick={() => setOpen(true)}>
+                    <FiEdit color="lightblue"/>    {/* Open Drawer*/}
+                </Button>
+                <Button bg={buttonBg} onClick={() => {handleDeleteProduct(productInstance._id)}}>
+                    <RiDeleteBin5Line color='red'/>
+                </Button>
             </HStack>
         </Box>
 
