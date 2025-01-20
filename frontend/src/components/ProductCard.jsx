@@ -81,7 +81,7 @@ const ProductCard = (product) => {
 
             <HStack spacing={2}>
                 <Button bg={buttonBg} onClick={() => setOpen(true)}>
-                    <FiEdit color="lightblue"/>    {/* Open Drawer*/}
+                    <FiEdit color='rgb(18, 154, 245)' />    {/* Open Drawer*/}
                 </Button>
                 <Button bg={buttonBg} onClick={() => {handleDeleteProduct(productInstance._id)}}>
                     <RiDeleteBin5Line color='red'/>
