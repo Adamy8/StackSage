@@ -20,7 +20,7 @@
 ## Running this project
 #### 1. Clone the repo:
  ```
-git clone
+git clone https://github.com/Adamy8/StackStage.git
 cd StackStage
 ```
 #### 2. Build the project
@@ -36,5 +36,5 @@ npm run start
 <br>
 
 > [!Note]
-> The project need Node.js, MongoDB installed
+> The project need Node.js, MongoDB installed to start.
 
