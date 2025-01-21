@@ -9,6 +9,7 @@
 - toggle mode
 - delete product
 
+
 ## Tech Stack (MERN)
 1. **MongoDB**: Used for managing and storing all the product data.
 2. **Node.js with Express**: Implements the backend REST API for seamless data handling.
@@ -17,21 +18,28 @@
    - **React-icons**: For adding icons to enhance the frontend.
 4. **Render**: Platform used to deploy the application.
 
+
 ## Running this project
 #### 1. Clone the repo:
  ```
 git clone https://github.com/Adamy8/StackStage.git
 cd StackStage
 ```
-#### 2. Build the project
+#### 2. Set up environment variables:
+- create a ```.env``` file containing two line (under /StackStage):
+- ```
+  MONGO_URI=your_mongodb_connection_string
+  PORT=5010
+  ```
+#### 3. Build the project
 ```bash
 npm run build
 ```
-#### 3. Start (Localy)
+#### 4. Start (Localy)
 ```bash
 npm run start
 ```
-#### 4. Open a browser and navigate to ```http://localhost:5010```
+#### 5. Open a browser and navigate to ```http://localhost:5010```
 
 <br>
 
