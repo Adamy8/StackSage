@@ -14,8 +14,8 @@
 1. **MongoDB**: Used for managing and storing all the product data.
 2. **Node.js with Express**: Implements the backend REST API for seamless data handling.
 3. **React.js**: Provides a dynamic and interactive user interface.
-   - **ChakraUI**: For UI components and styling.
-   - **React-icons**: For adding icons to enhance the frontend.
+   - **ChakraUI**: For UI components and styling. (https://www.chakra-ui.com/docs/get-started/installation)
+   - **React-icons**: For adding icons to enhance the frontend. (https://react-icons.github.io/react-icons/)
 4. **Render**: Platform used to deploy the application.
 
 
